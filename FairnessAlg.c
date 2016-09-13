@@ -19,8 +19,8 @@ function [P_st1, P_st2, P_st3, P_st4,rem_cap] = fcn(D_st1, D_st2, D_st3, D_st4, 
 		for i=1:4
 			if A_Power(i)<Demand(i)
 				n=n+Weight(i);
-            end
-        end
+                        end
+        	end
 		
 		br=cap/n;
 		cap=0;
@@ -28,13 +28,13 @@ function [P_st1, P_st2, P_st3, P_st4,rem_cap] = fcn(D_st1, D_st2, D_st3, D_st4, 
 		
 		for i=1:4
 			if(A_Power(i)<Demand(i))
-                A_Power(i)=A_Power(i) + Weight(i)*br;
+                		A_Power(i)=A_Power(i) + Weight(i)*br;
 				if(A_Power(i)>Demand(i))
 					cap=cap+A_Power(i)-Demand(i);
 					A_Power(i)=Demand(i);
-                end
-            end
-        end
+        			 end
+        		 end
+        	end
     end
     rem_cap = (init_cap - (A_Power(1) + A_Power(2) + A_Power(3) + A_Power(4)))/1000; 
     P_st1 = A_Power(1)/1000; % W/1000 > kW
